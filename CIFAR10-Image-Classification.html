@@ -14265,8 +14265,8 @@ a.anchor-link {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>CIFAR-10 is a commonly used dataset for training deep learning algorithms. It is often used in machine learning research, in part because the low-resolution images allow for algorithms to quickly process the data. In the first part of my analysis, I will be examining the intuition and importance of including Dropout in my neural network architecture. This short work is geared toward those with a foundation in basic deep learning concepts, and so explanations about the other aspects of my architecture, including optimizers, batch normalization, convolution, and max pooling are considered out of scope.</p>
-<p>In this dataset, there are 50,000 training images and 10,000 test images that all to one of 10 possible classes: Airplanes, Cars, Birds, Cats, Deer, Dogs, Frogs, Horses, Ships, and Trucks. Each entry is a 32-pixel x 32-pixel RGB-colored image.</p>
-<p>I first plot a subset of the CIFAR-10 dataset to offer some further intuition about the data. I use an adaptation of this <a href="https://machinelearningmastery.com/how-to-load-and-visualize-standard-computer-vision-datasets-with-keras/">sample code</a> to load and visualize an image from each of the first 9 categories, which helps to put the data into better context. It's clear that the images are pretty blurry, so even a human could feasibly struggle with some of these.</p>
+<p>This dataset includes 50,000 training images and 10,000 test images that belong to one of 10 possible classes: Airplanes, Cars, Birds, Cats, Deer, Dogs, Frogs, Horses, Ships, and Trucks. Each entry is a 32-pixel x 32-pixel RGB-colored image.</p>
+<p>I first plot a subset of the CIFAR-10 dataset to offer some visual intuition about the data. I use an adaptation of this <a href="https://machinelearningmastery.com/how-to-load-and-visualize-standard-computer-vision-datasets-with-keras/">sample code</a> to load and visualize an image from each of the first 9 categories, which helps to put the data into better context. It's clear that the images are pretty blurry, so even a human could feasibly struggle with some of these.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -14337,7 +14337,7 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Next, I scale the features to range from 0 to 1, a standard step in deep learning pre-processing. I also reshape the labels so that they are one-hot encoding for use with Keras' Categorical Cross Entropy loss.</p>
+<p>Next, I scale the features to range from 0 to 1, a standard step in deep learning pre-processing. I also reshape the labels so that they are one-hot encoded for use with Keras' Categorical Cross Entropy loss, the preferred loss function for multi-class classification problems.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -15154,7 +15154,7 @@ Epoch 100/100
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Discussion">Discussion<a class="anchor-link" href="#Discussion">&#182;</a></h2><p>Using the specific hyperparameters specified above, I achieve decent performance of about 74% validation accuracy with no dropout and 76% accuracy with dropout. Looking at the loss curves, what is most noteworthy is the U-shape of the validation loss for the no-dropout model. It is clear that after about 40 epochs, the model begins to overfit to the training data as the training loss continues to decrease, but the validation loss starts to rise. Including dropout to regularize the model remedies this overfitting issue, and we can see that the dropout validation loss is mostly decreasing over all 100 epochs.</p>
-<p>We can see that the Dropout layers are functioning exactly as they should be, preventing overfitting of the CNN to the training set of images and slightly improving overall performance. While dropout certainly helps here, a better network architecture would lead to far more pronounced improvements. I will discuss this in more detail in #2 below.</p>
+<p>Overall, the Dropout layers are functioning exactly as they should be, preventing overfitting of the CNN to the training set of images and slightly improving overall performance relative to the baseline model. While dropout certainly helps here, a better network architecture would lead to far more pronounced improvements. I will discuss this in more detail in #2 below.</p>
 
 </div>
 </div>
